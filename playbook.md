@@ -48,3 +48,9 @@ Toolkit run: copy toolkit/*.py to /home/claude/reels/, fonts via npm @fontsource
 - 2026-10-29: humor means jokes INSIDE niche China-knowledge scripts. Never make a whole joke reel and bolt a laowai CTA on the end. The CTA/tie-in must follow naturally from the topic. Strategist must push back when something does not serve the brand (no yes-man).
 - Keep VO scripts to ~25-35s; Reel 3 ran 40s, trim next time.
 - IG feed/explore skim 2026-10-29: generic 'China is ahead' hype reels draw political comment wars: skip that style.
+
+## Owner feedback (2026-10-29, Reel 4)
+- No repeating typing/tick/tock sounds; SFX sparse (whoosh, thump, soft pops, one-off sparkle).
+- Motion must be as fast as the inspo (typed chars ~30cps, whips ~0.15s, blur-ins ~0.25s).
+- Icons must be bbox-centred in their circles (use disc_icon() in reel_04v3.py).
+- Script = WOW/fun China fact first (not visa news), then blend laowai naturally; mention only "secure exchange", don't lean on passport/agent-verified.
