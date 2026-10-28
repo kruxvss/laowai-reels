@@ -32,3 +32,14 @@ Only save notes (technique, hook, timing, why it works) from reels that meet the
 
 ## Performance feedback
 performance.md is updated weekly from Metricool. Lean into formats/hooks/angles that win on saves, shares, watch time; retire what flops after 2+ tries.
+
+## Metricool call shape (verified 2026-10-29; overrides the older description in the task prompt)
+createScheduledPost takes: blogId (number 7716477), date ("2026-10-29T20:30:00+08:00" - must include the UTC offset), info (object) containing:
+text, publicationDate {dateTime:"2026-10-29T20:30:00", timezone:"Asia/Shanghai"}, providers [{network:"instagram"}] or [{network:"tiktok"}], media [raw.githubusercontent URL], autoPublish true,
+videoThumbnailUrl (IG reel cover), instagramData {type:"REEL", showReelOnFeed:true, isAiGenerated:false} or {type:"STORY"} (story: media = cover.png, text ""), tiktokData {privacyOption:"PUBLIC_TO_EVERYONE", title, isAigc:false}.
+getScheduledPosts takes brandId, fromDate, toDate (ISO with offset, e.g. 2026-10-29T00:00:00+08:00), timezone.
+Note: raw.githubusercontent URLs: check with curl -s -o /dev/null -w "%{http_code}" (plain -sI shows the proxy line, not the real status).
+Extra reels the owner adds use folder YYYY-MM-DD-b. Reel 2 ("The Nod") is scheduled 2026-10-29 14:30 CST, story 15:30; daily run slot stays 20:30.
+## Known toolkit gotcha
+paste_scaled used to mutate cached layers when alpha<1 (fixed in toolkit/reel_lib.py): always use the copy-on-alpha version.
+Toolkit run: copy toolkit/*.py to /home/claude/reels/, fonts via npm @fontsource (Instrument Serif italic file is instrument-serif-latin-400-italic), see reel_02_the_nod.py for the mascot + layout helpers (rich(), card(), halftone()).
