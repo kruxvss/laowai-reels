@@ -43,3 +43,8 @@ Extra reels the owner adds use folder YYYY-MM-DD-b. Reel 2 ("The Nod") is schedu
 ## Known toolkit gotcha
 paste_scaled used to mutate cached layers when alpha<1 (fixed in toolkit/reel_lib.py): always use the copy-on-alpha version.
 Toolkit run: copy toolkit/*.py to /home/claude/reels/, fonts via npm @fontsource (Instrument Serif italic file is instrument-serif-latin-400-italic), see reel_02_the_nod.py for the mascot + layout helpers (rich(), card(), halftone()).
+
+## Owner feedback log
+- 2026-10-29: humor means jokes INSIDE niche China-knowledge scripts. Never make a whole joke reel and bolt a laowai CTA on the end. The CTA/tie-in must follow naturally from the topic. Strategist must push back when something does not serve the brand (no yes-man).
+- Keep VO scripts to ~25-35s; Reel 3 ran 40s, trim next time.
+- IG feed/explore skim 2026-10-29: generic 'China is ahead' hype reels draw political comment wars: skip that style.
