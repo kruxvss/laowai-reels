@@ -55,3 +55,7 @@ Toolkit run: copy toolkit/*.py to /home/claude/reels/, fonts via npm @fontsource
 - Icons must be bbox-centred in their circles (use disc_icon() in reel_04v3.py).
 - Script = WOW/fun China fact first (not visa news), then blend laowai naturally; mention only "secure exchange", don't lean on passport/agent-verified.
 - (2026-10-29) Laowai pitch = UNIFICATION: jobs + agents in one place, no more hunting across WeChat groups (right group = you hear, wrong group = you never know). Clients do NOT care about phone/WeChat-ID filtering, verification, blind ratings: do not lead with them. Say "jobs/castings/shoots", not "gigs". Hook fact may be unrelated to the close (bigger gap = more curiosity) but must be a real WOW fact; a clever bridge line is a bonus.
+
+## Covers & settings (owner feedback 2026-10-29)
+- Every reel needs a designed banner/cover (toolkit/cover_tool.py: photo + headline + serif accent + ZH + wordmark, inside the central 3:4 safe zone), never a raw video frame. Upload as cover_banner.png and pass as videoThumbnailUrl.
+- Hide like count on every reel post (not settable via Metricool API; see notes).
