@@ -146,6 +146,48 @@ def glass_pill(img, txt, cx, cy, t, t0, col=BRAND, size=44, tc=WHITE):
     base = Image.new("RGBA", lay.size, (0, 0, 0, 0)); base.alpha_composite(sh2, (0, 10)); base.alpha_composite(lay)
     paste_scaled(img, base, (lay.size[0] / 2, 80), cx, cy, k, min(1, k * 2.5))
 
+
+# ---- 3D type presets ----
+def T3(txt, size, kind="white", depth=None, wt="extrabold"):
+    P_ = {"white": ((255, 255, 255), (255, 206, 198), (130, 14, 14)),
+          "red": ((255, 96, 84), (196, 28, 28), (96, 8, 8)),
+          "ink": ((74, 66, 58), (31, 27, 22), (196, 28, 28)),
+          "gold": ((255, 238, 190), (255, 130, 96), (120, 12, 12)),
+          "pink": ((255, 150, 140), (214, 40, 40), (90, 8, 8))}[kind]
+    d = depth if depth is not None else max(8, int(size * 0.07))
+    return type3d(txt, size, wt, P_[0], P_[1], P_[2], d)
+
+def karaoke(img, t, y=1700, dark=False):
+    for gi, g in enumerate(P.GROUPS):
+        if not (g[0][1] - 0.06 <= t <= g[-1][2] + 0.2): continue
+        size = 54; maxw = 900; lines = [[]]; wsum = 0
+        for k, (w, s2, e) in enumerate(g):
+            ww = text_w(w, size, "extrabold") + 22
+            if wsum + ww > maxw and lines[-1]: lines.append([]); wsum = 0
+            lines[-1].append((k, w, s2, e, ww)); wsum += ww
+        nL = len(lines); lh = 78; H_ = nL * lh + 40; Wd = max(sum(x[4] for x in L) for L in lines) + 70
+        a_in = clamp((t - (g[0][1] - 0.06)) / 0.08); a_out = 1 - clamp((t - (g[-1][2] + 0.05)) / 0.15)
+        al = a_in * a_out
+        if al <= 0: return
+        lay = Image.new("RGBA", (int(Wd) + 120, int(H_) + 120), (0, 0, 0, 0)); d = ImageDraw.Draw(lay)
+        d.rounded_rectangle((60, 66, 60 + Wd, 66 + H_), 44, fill=(0, 0, 0, 90)); lay = lay.filter(ImageFilter.GaussianBlur(12)); d = ImageDraw.Draw(lay)
+        d.rounded_rectangle((60, 54, 60 + Wd, 54 + H_), 44, fill=(255, 255, 255, 240))
+        for li, L in enumerate(lines):
+            tot = sum(x[4] for x in L); x = 60 + Wd / 2 - tot / 2; by = 54 + 20 + li * lh + 56
+            for (k, w, s2, e, ww) in L:
+                active = s2 - 0.02 <= t < (g[k + 1][1] if k + 1 < len(g) else e + 0.25) - 0.0
+                done = t >= (g[k + 1][1] if k + 1 < len(g) else e + 0.25)
+                col = INK if (active or done) else (150, 142, 130)
+                if active:
+                    pp = clamp((t - s2) / 0.14); inf = 1 + 0.14 * math.sin(pp * math.pi)
+                    cw = text_w(w, size, "extrabold") + 24
+                    d.rounded_rectangle((x + 11 - 12, by - 54, x + 11 - 12 + cw, by + 18), 24, fill=BRAND)
+                    col = (255, 255, 255)
+                draw_text(d, x + 11, by, w, size, "extrabold", col)
+                x += ww
+        paste_scaled(img, lay, (lay.size[0] / 2, 54 + H_ / 2 + 0), 540, y, 0.94 + 0.06 * out_back(a_in, 2.0), al)
+        return
+
 def frame_f(fi):
     t = fi / FPS; i = int(round(fi))
     s = scene_idx(t); ts = SC[s]
@@ -154,32 +196,33 @@ def frame_f(fi):
         img = P.BG.copy(); V.bg_motion(img, t)
     cam_z = 1.0; shake = 0.0
     if s == 0:
-        # 11.11 big, then counter, then HOW?
         pin = clamp((t - 0.05) / 0.5)
         if t < T_ONE:
-            Lb, Ab = text_layer("11.11", 400, "extrabold", WHITE, pad=60)
-            Lt, At = tilt(Lb, -5 + 3 * math.sin(t * 1.3), 14 * math.sin(t * 1.1 + 0.3))
+            Lb, Ab = T3("11.11", 400, "white", 30)
+            Lb = glint(Lb, clamp((t - 0.55) / 0.9), 0.14, 0.95)
+            Lt, At = tilt(Lb, -5 + 3 * math.sin(t * 1.3), 16 * math.sin(t * 1.1 + 0.3))
             out_k = clamp((t - (T_ONE - 0.25)) / 0.25)
-            paste_scaled(img, Lt, At, 540, 780 - 80 * out_k, out_back(pin, 2.0) * (1 - 0.4 * out_k), min(1, pin * 3) * (1 - out_k))
-            for k, ch in enumerate("1111"): pass
-            letters(img, "A joke about being single.", 62, "extrabold", WHITE, 540, 1130, t, T_JOKE - 0.05, 0.028)
-            zh(img, "一个关于单身的玩笑", 540, 1230, t, T_JOKE + 0.5, 42, (255, 214, 208), "extrabold")
+            paste_scaled(img, Lt, At, 540, 760 - 80 * out_k, out_back(pin, 2.0) * (1 - 0.4 * out_k) * 0.9, min(1, pin * 3) * (1 - out_k))
+            letters(img, "A joke about being single.", 62, "extrabold", WHITE, 540, 1150, t, T_JOKE - 0.05, 0.028)
+            zh(img, "一个关于单身的玩笑", 540, 1250, t, T_JOKE + 0.5, 42, (255, 214, 208), "extrabold")
         else:
             v = 1.7 * out_cubic(clamp((t - T_ONE) / max(0.3, T_TRILL - T_ONE)))
-            Ln, An = text_layer(f"¥{v:.1f}", 330, "extrabold", WHITE, pad=40)
+            Ln, An = T3(f"¥{v:.1f}", 330, "gold", 24)
             slam = clamp((t - T_TRILL) / 0.35)
-            paste_scaled(img, Ln, An, 540, 780 + (0 if t > T_TRILL else 20), 1.0 + 0.1 * math.sin(slam * math.pi) * (t > T_TRILL), 1)
+            Ln = glint(Ln, clamp((t - T_TRILL - 0.2) / 0.8), 0.16, 0.95)
+            Lq, Aq = tilt(Ln, -4, 6 * math.sin(t * 1.4))
+            paste_scaled(img, Lq, Aq, 540, 780 + (0 if t > T_TRILL else 20), 0.9 * (1.0 + 0.1 * math.sin(slam * math.pi) * (t > T_TRILL)), 1)
             if t >= T_TRILL:
-                letters(img, "TRILLION", 128, "extrabold", (255, 86, 78), 540, 985, t, T_TRILL - 0.05, 0.03, 0.3, 40, False)
+                Lt2, At2 = T3("TRILLION", 128, "pink", 16)
+                wipe_in(img, Lt2, At2, 540, 990, clamp((t - T_TRILL + 0.05) / 0.45), 40)
                 if t < T_TRILL + 0.3: img = chroma(img, 9 * (1 - (t - T_TRILL) / 0.3))
             if t >= T_YUAN:
-                wd = text_w("IN SALES · LAST YEAR   去年销售额", 34, "mono")
-                L, A = wl("IN SALES · LAST YEAR   去年销售额", 34, "mono", (255, 226, 220)); bin_(img, L, A, 540, 1100, t, T_YUAN, 0.25)
-                zh(img, "一个单身玩笑，卖出1.7万亿元", 540, 1180, t, T_YUAN + 0.3, 40, (255, 214, 208), "extrabold")
+                L, A = wl("IN SALES · LAST YEAR   去年销售额", 34, "mono", (255, 226, 220)); bin_(img, L, A, 540, 1110, t, T_YUAN, 0.25)
+                zh(img, "一个单身玩笑，卖出1.7万亿元", 540, 1190, t, T_YUAN + 0.3, 40, (255, 214, 208), "extrabold")
             if t >= T_HOW - 0.05:
                 p = clamp((t - T_HOW + 0.05) / 0.3); sc = 1.5 - 0.5 * out_expo(p)
-                L, A = text_layer("HOW?", 230, "extrabold", BRAND, pad=50); Lw, Aw = text_layer("HOW?", 230, "extrabold", WHITE, pad=50)
-                paste_scaled(img, L, A, 548, 1488, sc * 1.0, min(1, p * 3)); paste_scaled(img, Lw, Aw, 540, 1480, sc, min(1, p * 3))
+                Lh, Ah = T3("HOW?", 230, "white", 26); Lh = glint(Lh, clamp((t - T_HOW - 0.25) / 0.7), 0.16, 0.9)
+                paste_scaled(img, Lh, Ah, 540, 1500, sc * 0.95, min(1, p * 3))
                 shake = 14 * (1 - p) ** 2
     elif s == 1:
         V.glow(img, 540, 760, t, ts, 1.8, 0.4)
@@ -187,7 +230,7 @@ def frame_f(fi):
         k = pop(t, ts + 0.05, 0.4)
         paste_scaled(img, DORM, DORMA, 540, 880, 1.0 * k, min(1, k * 2), rot=-1.2)
         if T_ELEV - 0.1 <= t < T_4ONES + 0.1:
-            e = pop(t, T_ELEV - 0.1, 0.35); Lb, Ab = text_layer("11.11", 260, "extrabold", BRAND, pad=50); Lt, At = tilt(Lb, -8, 12 * math.sin(t * 2))
+            e = pop(t, T_ELEV - 0.1, 0.35); Lb, Ab = T3("11.11", 260, "red", 20); Lb = glint(Lb, clamp((t - T_ELEV - 0.1) / 0.8), 0.16, 0.9); Lt, At = tilt(Lb, -8, 12 * math.sin(t * 2))
             paste_scaled(img, Lt, At, 540, 820, e * 1.15, 1)
         if t >= T_4ONES - 0.05:
             for j in range(4):
@@ -208,7 +251,7 @@ def frame_f(fi):
                     L, A = text_layer("…", 70, "extrabold", MUTED); paste_scaled(img, L, A, x + 60, 800 - 14 * (tt % 1.6) , 0.7, 0.7 * min(1, tt * 3) * (1 - clamp((tt % 1.6 - 1.0) / 0.6)))
     elif s == 2:
         V.glow(img, 540, 700, t, ts, 1.8, 0.4)
-        letters(img, "2009", 280, "serif", BRAND, 540, 520, t, ts + 0.1, 0.09, 0.45, 80, True)
+        L9, A9 = T3("2009", 290, "red", 16, "serif"); wipe_in(img, L9, A9, 540, 520, clamp((t - ts - 0.05) / 0.7), 70)
         glass_pill(img, "27 SHOPS  27家店", 540, 640, t, T_27 - 0.05, INK, 40)
         cols = 9
         for j in range(27):
@@ -217,7 +260,7 @@ def frame_f(fi):
                 x = 540 + ((j % cols) - (cols - 1) / 2) * 104; y = 800 + (j // cols) * 112
                 paste_scaled(img, SHOP[0], SHOP[1], x, y + 4 * math.sin(t * 2 + j * 0.7), pop(t, c0, 0.25) * 1.25, 1)
         if t >= T_50 - 0.1:
-            v = int(round(50 * out_cubic(clamp((t - T_50 + 0.1) / 0.9)))); L, A = ctext(f"≈ ¥{v} MILLION", 112, "extrabold", BRAND)
+            v = int(round(50 * out_cubic(clamp((t - T_50 + 0.1) / 0.9)))); L, A = T3(f"≈ ¥{v} MILLION", 104, "red", 10)
             paste_scaled(img, L, A, 540, 1250, pop(t, T_50 - 0.1, 0.3), 1)
             zh(img, "约5000万元", 540, 1330, t, T_50 + 0.3, 44)
     elif s == 3:
@@ -234,7 +277,7 @@ def frame_f(fi):
         for k in range(14):
             r = random.Random(k); x = 560 + r.uniform(0, 320); y = (base_y - hb + (t * 900 + r.uniform(0, 1500)) % max(40, hb)); d.line((x, y, x, y + r.uniform(40, 120)), fill=(255, 255, 255, 60), width=3) if hb > 100 else None
         if t >= T_TRILL2 - 0.15:
-            val = 1.7 * out_cubic(clamp((t - T_TRILL2 + 0.15) / 0.9)); L, A = text_layer(f"¥{val:.1f} TRILLION", 120, "extrabold", WHITE, pad=40)
+            val = 1.7 * out_cubic(clamp((t - T_TRILL2 + 0.15) / 0.9)); L, A = T3(f"¥{val:.1f} TRILLION", 112, "gold", 12); L = glint(L, clamp((t - T_TRILL2 - 0.9) / 0.7), 0.16, 0.9)
             paste_scaled(img, L, A, 540, 520, 1.0 + 0.06 * math.sin(clamp((t - T_TRILL2 - 0.75) / 0.3) * math.pi), 1)
             if t < T_TRILL2 + 0.3: img = chroma(img, 8 * (1 - (t - T_TRILL2 + 0.15) / 0.45))
             zh(img, "1.7万亿元", 540, 640, t, T_TRILL2 + 0.2, 44, (255, 214, 208), "extrabold")
@@ -253,7 +296,7 @@ def frame_f(fi):
         zh(img, "镜头前的面孔", 540, 1520, t, T_FACES, 44)
     elif s == 5:
         V.glow(img, 540, 760, t, ts, 1.8, 0.5)
-        letters(img, "That's work.", 120, "extrabold", INK, 540, 480, t, T_WORK - 0.35, 0.04, 0.35, 60, True)
+        Lw, Aw = T3("That's work.", 124, "ink", 12); wipe_in(img, Lw, Aw, 540, 480, clamp((t - T_WORK + 0.35) / 0.55), 60)
         zh(img, "你是在中国的外国人，这就是工作", 540, 570, t, T_IF + 0.5, 42)
         mx = clamp((t - T_HARD) / 1.0)
         for j in range(8):
@@ -277,7 +320,7 @@ def frame_f(fi):
             Lm, Am = MK, MKA; Lt, At = tilt(Lm, -8 * (1 - out_cubic(k2)) + 2 * math.sin(t), 14 * (1 - out_cubic(k2)) * (-1))
             V.glow(img, 540, 940, t, T_SO + 0.8, 1.8, 0.8)
             paste_scaled(img, Lt, At, 540, 940, 0.92 * out_back(k2, 1.8), min(1, k2 * 3))
-        typed(img, t, [S_("One ", INK, 1.0), SE_("marketplace.", BRAND, 1.2)], 96, 540, 300, T_ONEM, 28)
+        Lm_, Am_ = T3("One marketplace.", 108, "ink", 12); wipe_in(img, Lm_, Am_, 540, 300, clamp((t - T_ONEM) / 0.6), 50)
         zh(img, "一个平台，所有机会、所有经纪人", 540, 400, t, T_ONEM + 0.3, 40)
         if t >= T_EVJOB: L, A = pill("Every job", "所有机会", "case", True); V.blur_in(img, L, A, 290, 1480, t, T_EVJOB, 0.22)
         if t >= T_EVAG: L, A = pill("Every agent", "所有经纪人", "person", False); V.blur_in(img, L, A, 790, 1480, t, T_EVAG, 0.22)
@@ -295,13 +338,7 @@ def frame_f(fi):
     img = whip(img, t, i)
     te = SC[s + 1]; p = clamp((t - ts) / max(0.5, min(te, P.DUR) - ts))
     img = camera(img, zoom=1.0 + 0.05 * p)
-    if t < SC[7] and not (s == 0 and t < 0.3):
-        for gi, g in enumerate(P.GROUPS):
-            if g[0][1] - 0.06 <= t <= g[-1][2] + 0.2:
-                ai = 0
-                for k, (w, s2, e) in enumerate(g):
-                    if t >= s2 - 0.02: ai = k
-                Lc, Ac = P.CAPS[(gi, ai)]; cap_plate(img, Lc, Ac, 1700); paste_scaled(img, Lc, Ac, 540, 1700, 1, min(1, (t - (g[0][1] - 0.06)) / 0.06)); break
+    if t < SC[7] and not (s == 0 and t < 0.3): karaoke(img, t, 1700)
     fade = clamp((P.DUR - t) / 0.3) if t > P.DUR - 0.3 else 1.0
     return post(img, i, glitch=0.0, grain=0.22, vignette=0.12 if s in DARK else 0.0, fade=fade)
 

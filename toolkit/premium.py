@@ -73,3 +73,62 @@ def letters(img, txt, size, weight, col, cx, by, t, t0, stagger=0.035, dur=0.35,
                 if blur and p < 0.7: lay = L.filter(ImageFilter.GaussianBlur((0.7 - p) * 10))
                 paste_scaled(img, lay, A, x + wch / 2, by + rise * (1 - e), 0.8 + 0.2 * e, min(1, p * 2.5))
         x += wch
+
+
+# ---------------- 3D type system ----------------
+_t3 = {}
+def type3d(txt, size, weight="extrabold", top=(255, 255, 255), bot=(255, 214, 208), side=(150, 20, 20), depth=16, ang=(0.35, 1.0), shadow=0.45, pad=70):
+    """Extruded, gradient-faced lettering with bevel highlight + soft drop shadow. Returns (layer, anchor)."""
+    key = (txt, size, weight, top, bot, side, depth, ang, shadow)
+    if key in _t3: return _t3[key]
+    base, anc = text_layer(txt, size, weight, (255, 255, 255), pad=pad)
+    a = np.asarray(base.getchannel("A")).astype(np.float32) / 255.0
+    h, w = a.shape; ex = int(depth * abs(ang[0])) + 2; ey = depth + 2
+    out = np.zeros((h + ey + 20, w + ex + 20, 4), np.float32)
+    # extrusion: back-to-front stack, side colour darkens with depth
+    for k in range(depth, 0, -1):
+        dx = int(round(k * ang[0])); dy = int(round(k * ang[1])); f = 0.55 + 0.45 * (1 - k / depth)
+        col = np.array(side, np.float32) * f
+        m = a[:, :]
+        sl = out[dy:dy + h, dx:dx + w]
+        al = m[..., None]
+        sl[..., :3] = sl[..., :3] * (1 - al) + col * al; sl[..., 3] = np.maximum(sl[..., 3], m)
+    # face gradient
+    ys = np.linspace(0, 1, h, dtype=np.float32)[:, None, None]
+    grad = np.array(top, np.float32) * (1 - ys) + np.array(bot, np.float32) * ys
+    grad = np.broadcast_to(grad, (h, w, 3))
+    al = a[..., None]; sl = out[0:h, 0:w]
+    sl[..., :3] = sl[..., :3] * (1 - al) + grad * al; sl[..., 3] = np.maximum(sl[..., 3], a)
+    # bevel: bright rim on top-left edge, dark on bottom-right
+    ab = Image.fromarray((a * 255).astype(np.uint8)); sh1 = np.asarray(ab.transform(ab.size, Image.AFFINE, (1, 0, 3, 0, 1, 4))).astype(np.float32) / 255
+    rim = np.clip(a - sh1, 0, 1)[..., None]; sl[..., :3] = sl[..., :3] * (1 - rim * 0.85) + 255 * rim * 0.85
+    sh2 = np.asarray(ab.transform(ab.size, Image.AFFINE, (1, 0, -3, 0, 1, -4))).astype(np.float32) / 255
+    drk = np.clip(a - sh2, 0, 1)[..., None]; sl[..., :3] = sl[..., :3] * (1 - drk * 0.25)
+    out[..., 3] *= 255
+    lay = Image.fromarray(np.clip(out, 0, 255).astype(np.uint8), "RGBA")
+    # drop shadow
+    sh = Image.new("RGBA", lay.size, (0, 0, 0, 0)); sh.putalpha(lay.getchannel("A").point(lambda v: int(v * shadow)))
+    sh = sh.filter(ImageFilter.GaussianBlur(18)); full = Image.new("RGBA", lay.size, (0, 0, 0, 0)); full.alpha_composite(sh, (6, 24)); full.alpha_composite(lay)
+    res = (full, (anc[0] + ex * 0.2, anc[1] - 4)); _t3[key] = res; return res
+
+def wipe_in(img, lay, anc, cx, cy, p, rise=50, scale=1.0, soft=0.25, alpha=1.0):
+    """left-to-right soft wipe reveal with rise"""
+    from reel_lib import out_cubic
+    if p <= 0: return
+    p = min(1.0, p); w, h = lay.size
+    if p < 1.0:
+        gx = np.linspace(0, 1, w, dtype=np.float32)[None, :]; e = out_cubic(p) * (1 + soft)
+        m = np.clip((e - gx) / soft, 0, 1); m = np.broadcast_to(m, (h, w))
+        a = np.asarray(lay.getchannel("A")).astype(np.float32) * m
+        lay = lay.copy(); lay.putalpha(Image.fromarray(a.astype(np.uint8)))
+    paste_scaled(img, lay, anc, cx, cy + rise * (1 - out_cubic(min(1, p * 1.3))), scale, alpha)
+
+def glint(lay, p, width=0.18, strength=0.9, ang=0.5):
+    """specular light band sweeping across lettering (p 0..1); returns new layer"""
+    if p <= 0 or p >= 1: return lay
+    w, h = lay.size; xs = np.arange(w, dtype=np.float32)[None, :]; ys = np.arange(h, dtype=np.float32)[:, None]
+    cx = (-0.3 + 1.6 * p) * w; d = np.abs((xs - ys * ang) - cx) / (width * w)
+    band = np.clip(1 - d, 0, 1) ** 1.5 * strength
+    arr = np.asarray(lay).astype(np.float32); al = arr[..., 3:4] / 255
+    arr[..., :3] = arr[..., :3] * (1 - band[..., None] * al) + 255 * band[..., None] * al
+    return Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8), "RGBA")
