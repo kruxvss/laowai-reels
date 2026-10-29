@@ -584,7 +584,6 @@ def frame_f(fi):
             zh(img, "约5000万元", 540, 1330, t, T_50 + 0.3, 44)
     elif s == 3:
         # bars
-        glass_pill(img, "LAST YEAR  去年", 540, 250, t, T_LAST, BRAND, 40)
         h0 = 16; p = out_expo(clamp((t - (T_TRILL2 - 0.45)) / 1.5)); hb = 14 + 1500 * p
         base_y = 1500
         d = ImageDraw.Draw(img, "RGBA")
@@ -602,6 +601,7 @@ def frame_f(fi):
             if t < T_TRILL2 + 0.3: img = chroma(img, 8 * (1 - (t - T_TRILL2 + 0.15) / 0.45))
             zh(img, "1.7万亿元", 540, 640, t, T_TRILL2 + 0.2, 44, (255, 214, 208), "extrabold")
         sweep(img, t, T_TRILL2 - 0.1, 0.9, a=70)
+        glass_pill(img, "LAST YEAR  去年", 540, 250, t, T_LAST, BRAND, 40)
     elif s == 4:
         V.glow(img, 540, 800, t, ts, 1.8, 0.4)
         tt = t - ts; L, A = phone_layer(t); ay = -16 + 22 * clamp(tt / 3.5); ax = -4 + 3 * math.sin(t)
