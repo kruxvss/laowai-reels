@@ -8,7 +8,7 @@
 - Foreign livestream hosts: AFP Nov 2020 - Chinese firms recruit foreign hosts (Linkone ~50 influencers; Neusoft aims 300-500; host earns up to ¥1,500/session) https://fashionunited.com/news/retail/chinese-retailers-recruit-foreign-influencers-to-drive-sales/2020110936356 (2020 - old; recheck before quoting figures)
 
 ## One clock (script idea 2)
-- China Standard Time UTC+8 everywhere officially; geographically ~5 zones; informal Xinjiang Time UTC+6 (https://www.thatsmandarin.com/traveling-in-china/how-many-time-zones-does-china-have/). Keep neutral, no politics. "Sunrise at 10am" NOT verified - check Kashgar winter sunrise before using.
+- China Standard Time UTC+8 everywhere officially; geographically ~5 zones; informal Xinjiang Time UTC+6 (https://www.thatsmandarin.com/traveling-in-china/how-many-time-zones-does-china-have/). Keep neutral, no politics. VERIFIED: Kashgar latest sunrise of the year ~8:16 local (Urumqi time) = ~10:16 Beijing time (sunrisesunset.io https://sunrisesunset.io/cn/xinjiang/kashgar/, checked 2026-10-29); today 9:13 Beijing time. Hook "sun rises after 10am in winter" is usable (say "in winter").
 
 ## Hengdian (script idea 3, parked)
 - Jan 2024: basic extras pay ¥120 -> ¥180 per 10h day; 130,000+ registered extras, ~10,000 year-round (China Daily https://enapp.chinadaily.com.cn/a/202401/17/AP65a7e46ca310f2b5809201cb.html)
