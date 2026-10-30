@@ -59,3 +59,10 @@ Toolkit run: copy toolkit/*.py to /home/claude/reels/, fonts via npm @fontsource
 ## Covers & settings (owner feedback 2026-10-29)
 - Every reel needs a designed banner/cover (toolkit/cover_tool.py: photo + headline + serif accent + ZH + wordmark, inside the central 3:4 safe zone), never a raw video frame. Upload as cover_banner.png and pass as videoThumbnailUrl.
 - Hide like count on every reel post (not settable via Metricool API; see notes).
+
+## Permanent writing guidelines (owner, 2026-10-30)
+HOOKS: first 1-3s decide everything. Explore >=5 angles before choosing; never take the first. Use curiosity, surprise, tension, unusual facts, strong contrasts, specific numbers. Banned openers: "Did you know?", "Have you ever wondered?", "China is full of opportunities". Don't explain everything in the hook. Sound human, not clickbait/corporate. Make it relevant to foreigners / intl students / people working or building a life in China. For every new reel idea, challenge the hook FIRST and improve it before writing the rest.
+SCRIPT: write for the ear; short punchy conversational sentences; no filler, repetition, AI-sounding or motivational cliches, no corporate language; every line creates curiosity, advances the story or delivers value; build tension progressively; retention over cramming details; clarity over cleverness.
+STORY: real people, unusual stories, surprising stats, unexpected opportunities; make it emotionally interesting BEFORE connecting to laowai; natural bridge to the problem laowai solves; not every video an ad; valuable even to someone who never heard of laowai.
+QUALITY: be critical of weak concepts and propose stronger ones; don't auto-agree; fact-check names, history, stats and claims; no exaggerated claims or fabricated success stories; think visuals alongside narration; pace for TikTok/Reels.
+BRAND: laowai.ma = discovering opportunities for foreign talent in China (jobs, agents, companies, opportunities, many industries). Feel modern, ambitious, international, trustworthy.
