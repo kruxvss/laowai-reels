@@ -196,42 +196,69 @@ function globeSet() {
 // ---------------------------------------------------------------- final set: clocks merge -> job cards orbit -> laowai card
 function finaleSet() {
   const scene = new THREE.Scene(), cam = G.camera(34, 0.05, 100);
-  scene.background = new THREE.Color(0x12080a); scene.environment = G.ENV; scene.environmentIntensity = 0.12;
-  const key = new THREE.DirectionalLight(0xfff0e6, 1.3); key.position.set(-3, 5, 6); key.castShadow = true; key.shadow.mapSize.set(1024, 1024); scene.add(key);
-  const rim = new THREE.DirectionalLight(0xff6a50, 1.4); rim.position.set(4, 2, -5); scene.add(rim);
-  scene.add(new THREE.AmbientLight(0x402020, 0.5));
-  const floor = new THREE.Mesh(new THREE.CircleGeometry(12, 64), phys(0x1a0c0e, { roughness: 0.25, clearcoat: 0.8 })); floor.rotation.x = -Math.PI / 2; floor.position.y = -2.2; floor.receiveShadow = true; scene.add(floor);
-  const cB = makeClock({ label: 'BEIJING', cjk: '北京时间', accent: 0xc41c1c, r: 1.0 }), cX = makeClock({ label: 'XINJIANG', cjk: '新疆时间', accent: 0x2a6ab0, r: 1.0 });
-  scene.add(cB); scene.add(cX);
-  const jobs = ['CASTING', 'TV HOST', 'MODEL', 'VOICE-OVER', 'LIVESTREAM', 'TEACHER', 'AGENT', 'SHOOT', 'EVENT MC', 'BRAND AD'];
-  const cards = jobs.map((j, i) => {
-    const t = canvasTex(384, 128, (c) => { c.fillStyle = '#fbf8f2'; c.beginPath(); c.roundRect(2, 2, 380, 124, 36); c.fill(); c.fillStyle = '#c41c1c'; c.beginPath(); c.arc(60, 64, 26, 0, Math.PI * 2); c.fill(); c.fillStyle = '#1f1b16'; c.font = '800 44px Display'; c.fillText(j, 104, 80); });
-    const fm = new THREE.MeshBasicMaterial({ map: t }); const m = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.5, 0.06), [mat(0xddd6cc), mat(0xddd6cc), mat(0xddd6cc), mat(0xddd6cc), fm, fm]);
-    m.castShadow = true; scene.add(m); return m;
+  scene.environment = G.ENV; scene.environmentIntensity = 0.15;
+  const bgU = { a: { value: new THREE.Color(0x3a1418) }, b: { value: new THREE.Color(0xd8783c) } };
+  const bg = new THREE.Mesh(new THREE.SphereGeometry(60, 32, 16), new THREE.ShaderMaterial({ side: THREE.BackSide, fog: false, uniforms: bgU,
+    vertexShader: 'varying vec3 vp; void main(){ vp = normalize(position); gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
+    fragmentShader: 'uniform vec3 a; uniform vec3 b; varying vec3 vp; void main(){ float h = clamp(vp.y*1.4+0.45,0.0,1.0); gl_FragColor = vec4(mix(b, a, h),1.0); }' }));
+  scene.add(bg);
+  const key = new THREE.DirectionalLight(0xfff0e0, 2.0); key.position.set(-3, 6, 6); key.castShadow = true; key.shadow.mapSize.set(2048, 2048);
+  Object.assign(key.shadow.camera, { left: -5, right: 5, top: 6, bottom: -3, near: 1, far: 30 }); key.shadow.normalBias = 0.03; scene.add(key);
+  const rim = new THREE.DirectionalLight(0xff8a5a, 2.2); rim.position.set(3, 3, -5); scene.add(rim);
+  scene.add(new THREE.HemisphereLight(0xffd8c0, 0x401818, 0.6));
+  const floor = new THREE.Mesh(new THREE.CircleGeometry(30, 64), phys(0x5a2a22, { roughness: 0.3, clearcoat: 0.7 })); floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; scene.add(floor);
+  // sun for the callback (rises behind at the end)
+  const sunM = new THREE.MeshBasicMaterial({ color: 0xffd28a, fog: false }); const sun = new THREE.Mesh(new THREE.SphereGeometry(2.2, 48, 24), sunM); scene.add(sun);
+  // clocks
+  const cB = makeClock({ label: 'BEIJING', cjk: '北京时间', accent: 0xc41c1c, r: 1.25 }), cX = makeClock({ label: 'XINJIANG', cjk: '新疆时间', accent: 0x2a6ab0, r: 1.25 });
+  scene.add(cB); scene.add(cX); cB.traverse((o) => { if (o.isMesh) o.castShadow = true; }); cX.traverse((o) => { if (o.isMesh) o.castShadow = true; });
+  // job dial overlay that replaces the numbers
+  const JOBS = ['CASTING', 'TV HOST', 'MODEL', 'VOICE-OVER', 'AGENT', 'LIVESTREAM', 'SHOOT', 'AGENT'];
+  const dialT = canvasTex(1024, 1024, (c) => {
+    c.fillStyle = '#fbf6ec'; c.beginPath(); c.arc(512, 512, 505, 0, Math.PI * 2); c.fill();
+    JOBS.forEach((j, i) => {
+      const a = (i / JOBS.length) * Math.PI * 2, x = 512 + Math.sin(a) * 330, y = 512 - Math.cos(a) * 330;
+      c.font = '800 54px Display'; const w = c.measureText(j).width + 64;
+      c.fillStyle = j === 'AGENT' ? '#1f1b16' : '#c41c1c'; c.beginPath(); c.roundRect(x - w / 2, y - 40, w, 80, 40); c.fill();
+      c.fillStyle = '#fff'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(j, x, y + 3);
+    });
   });
-  const wmT = canvasTex(1024, 640, (c) => {
-    c.fillStyle = '#fbf8f2'; c.beginPath(); c.roundRect(4, 4, 1016, 632, 90); c.fill();
-    c.textAlign = 'center'; c.font = '800 190px Display'; c.fillStyle = '#1f1b16'; const w1 = c.measureText('laowai').width; c.font = '900 190px "Noto Sans CJK SC"'; const w2 = c.measureText('吗').width;
-    c.textAlign = 'left'; c.font = '800 190px Display'; c.fillText('laowai', 512 - (w1 + w2) / 2, 330); c.font = '900 190px "Noto Sans CJK SC"'; c.fillStyle = '#c41c1c'; c.fillText('吗', 512 - (w1 + w2) / 2 + w1, 330);
-    c.font = '700 64px UI'; c.fillStyle = '#c41c1c'; c.textAlign = 'center'; c.fillText('laowai.ma', 512, 480);
-  });
-  const slab = new THREE.Mesh(new THREE.BoxGeometry(3.2, 2.0, 0.18), [mat(0xc41c1c), mat(0xc41c1c), mat(0xc41c1c), mat(0xc41c1c), new THREE.MeshStandardMaterial({ map: wmT, roughness: 0.35 }), mat(0xc41c1c)]);
-  slab.castShadow = true; scene.add(slab);
-  return { scene, camera: cam, bloom: 0.12, bloomThreshold: 0.95,
+  const dialM = new THREE.MeshStandardMaterial({ map: dialT, transparent: true, opacity: 0, roughness: 0.5 });
+  const dial = new THREE.Mesh(new THREE.CircleGeometry(1.24, 64), dialM); dial.position.z = 0.045; cB.add(dial);
+  // centre cap that becomes the iris
+  const coreM = new THREE.MeshStandardMaterial({ color: 0xc41c1c, emissive: 0xc41c1c, emissiveIntensity: 0.4 });
+  const core = new THREE.Mesh(new THREE.CircleGeometry(0.12, 48), coreM); core.position.z = 0.135; cB.add(core);
+  // characters
+  const student = makeChar({ skin: 0xb07a58, shirt: 0xc41c1c, pants: 0x2c3040, hair: 0x2a1c16, painter: false });
+  const friend = makeChar({ skin: 0xe0b48c, shirt: 0x3a6a5a, pants: 0x3c3836, hair: 0x1a1612, painter: false });
+  scene.add(student); scene.add(friend);
+  const v = new THREE.Vector3();
+  return { scene, camera: cam, bloom: 0.15, bloomThreshold: 0.95, bloomRadius: 0.5,
+    coreScreen() { core.getWorldPosition(v); v.project(cam); return [(v.x + 1) / 2 * W, (1 - v.y) / 2 * H]; },
     update(t, u, o = {}) {
-      const m = o.merge ?? 0, orbit = o.orbit ?? 0, snap = o.snap ?? 0, end = o.end ?? 0;
-      cB.position.set(lerp(-1.25, 0, m), 0.2 + 0.05 * Math.sin(t * 2), lerp(0, 0.05, m)); cX.position.set(lerp(1.25, 0, m), 0.2 + 0.05 * Math.sin(t * 2 + 1), 0);
-      cB.rotation.y = lerp(0.25, 0, m); cX.rotation.y = lerp(-0.25, 0, m);
+      const m = o.merge ?? 0, dialK = o.dial ?? 0, spin = o.spin ?? 0, endK = o.end ?? 0;
+      const endMode = endK > 0;
+      // backdrop warms to brand red on the end card
+      bgU.a.value.set(endMode ? 0x8a0e12 : 0x3a1418); bgU.b.value.set(endMode ? 0xe0402c : 0xd8783c);
+      cB.visible = cX.visible = !endMode;
+      cB.position.set(lerp(-1.45, 0, m), 2.25, 0); cX.position.set(lerp(1.45, 0, m), 2.25, -0.02);
+      cB.rotation.y = lerp(0.3, 0, m); cX.rotation.y = lerp(-0.3, 0, m); cX.visible = !endMode && m < 0.97;
       cB.userData.setTime(12, 0); cX.userData.setTime(lerp(10, 12, E.inOutCubic(m)), 0);
-      cX.visible = m < 0.98; cB.scale.setScalar(lerp(1, 1.15, m) * (1 - end));
-      cards.forEach((c, i) => {
-        const a = (i / cards.length) * Math.PI * 2 + t * 0.9, rad = lerp(3.2, 0.2, snap), y = Math.sin(a * 2 + t) * 0.6 * (1 - snap);
-        c.position.set(Math.cos(a) * rad, 0.2 + y, Math.sin(a) * rad * 0.6);
-        c.lookAt(cam.position); c.scale.setScalar(clamp(orbit * 3 - i * 0.2) * (1 - snap * 0.95));
-        c.visible = orbit > 0 && snap < 0.99;
-      });
-      slab.visible = end > 0; slab.scale.setScalar(0.7 * E.outBack(clamp(end), 1.6)); slab.position.set(0, 0.3 + 0.06 * Math.sin(t * 2), 0); slab.rotation.y = 0.25 * Math.sin(t * 0.8) * (1 - end * 0.6);
-      G.lookFrom(cam, o.cam ?? [0, 0.6, 7.5], [0, -0.45, 0]); cam.fov = o.fov ?? 34; cam.updateProjectionMatrix();
+      dialM.opacity = dialK;
+      // hand: spins through the jobs, lands on AGENT
+      cB.userData.mh.rotation.z = -spin * Math.PI * 2; cB.userData.hh.visible = dialK < 0.5;
+      cB.scale.setScalar(1 + 0.06 * wobble(t - (o.mergeT ?? 0), 2.5, 5));
+      // sun callback
+      sun.visible = endMode; sun.position.set(0, lerp(-2.5, 1.2, E.outCubic(endK)), -20); sunM.color.setHSL(0.08, 1, 0.62);
+      // characters
+      const cheer = endMode ? 1 : 0, hop = endMode ? Math.abs(Math.sin(t * 7)) * 0.12 : 0;
+      student.position.set(endMode ? 0.75 : 1.55, hop, endMode ? 0.4 : 1.1); friend.position.set(endMode ? -0.75 : -1.55, endMode ? Math.abs(Math.sin(t * 7 + 1.4)) * 0.12 : 0, endMode ? 0.4 : 1.1);
+      const lookUp = !endMode;
+      pose(student, { yaw: endMode ? -0.15 : -0.5, headPitch: lookUp ? -0.45 : 0, headYaw: lookUp ? -0.5 : 0, brow: (o.wow ?? 0) * 0.9 + 0.5 * cheer, mouthOpen: !endMode && (o.wow ?? 0) > 0.5 ? 0.7 : 0, blink: 1,
+        armR: cheer ? [-2.7 + 0.25 * Math.sin(t * 9), 0.35] : [0.1, -0.3], armL: [0.1, -0.3], look: [lookUp ? -0.6 : 0, lookUp ? 0.8 : 0] });
+      pose(friend, { yaw: endMode ? 0.15 : 0.5, headPitch: lookUp ? -0.45 : 0, headYaw: lookUp ? 0.5 : 0, brow: (o.wow ?? 0) * 0.9 + 0.2 * cheer, mouthOpen: 0, blink: (t > 30.2 && t < 30.32) ? 0 : 1,
+        armR: cheer ? [-2.7 + 0.25 * Math.sin(t * 9 + 1), 0.35] : [-0.2 - 0.4 * (o.wow ?? 0), -0.9 * (o.wow ?? 0)], armL: [0.1, -0.3], look: [lookUp ? 0.6 : 0, lookUp ? 0.8 : 0] });
+      G.lookFrom(cam, o.cam ?? [0, 2.2, 8.5], o.tgt ?? [0, 2.0, 0]); cam.fov = o.fov ?? 36; cam.updateProjectionMatrix();
     } };
 }
 
@@ -363,27 +390,54 @@ M.film({
         subtitle(ctx, [['Say "see you at noon"… ', 0], ['which noon?', 1]], t, LS(6), LE(6) + 0.3);
       }
     } else {
-      // finale: clocks merge -> job cards -> laowai
-      const merge = E.inOutCubic(prog(t, SC[7], SC[7] + 1.0));
-      const orbit = prog(t, SC[8] - 0.1, SC[8] + 0.8), snap = E.inOutCubic(prog(t, tw('agent', 8) - 0.2, tw('agent', 8) + 0.6));
-      const end = E.outCubic(prog(t, tw('agent', 8) + 0.2, tw('agent', 8) + 0.7));
-      G.renderSet(ctx, S.fin, t, u, { merge, orbit, snap, end, cam: [lerp(0, 0.4, prog(t, SC[7], DUR())), lerp(0.6, 0.9, prog(t, SC[7], DUR())), lerp(8.5, 7.2, prog(t, SC[7], DUR()))] });
-      if (s === 7) { dimType(ctx, 'ONE COUNTRY.', t, LS(7) - 0.05, W / 2, H * 0.16, 120, { top: '#FFFFFF', bot: '#FFD0C8', side: [110, 20, 20] }); dimType(ctx, 'ONE CLOCK.', t, tw('one', 7, 1) - 0.1, W / 2, H * 0.26, 140, { top: '#FFE0D8', bot: '#E8402C', side: [110, 10, 10] }); }
-      if (s === 8) {
-        dimType(ctx, 'EVERY JOB.', t, tw('job', 8) - 0.15, W / 2, H * 0.15, 120, { top: '#FFFFFF', bot: '#FFE6C8', side: [110, 30, 20], out: LE(8) + 1.5 });
-        dimType(ctx, 'EVERY AGENT.', t, tw('agent', 8) - 0.15, W / 2, H * 0.24, 120, { top: '#FFFFFF', bot: '#FFE6C8', side: [110, 30, 20], out: LE(8) + 1.5 });
+      // finale: two clocks merge into one -> the numbers become jobs -> push into the centre -> red iris -> end card
+      const merge = E.inOutCubic(prog(t, SC[7] + 0.1, SC[7] + 1.0));
+      const dial = E.outCubic(prog(t, LS(8) + 0.1, LS(8) + 0.5));
+      const tA = tw('agent', 8);
+      const spin = dial > 0 ? (t < tA ? 1.6 * E.inCubic(prog(t, LS(8) + 0.3, tA)) : 1.6 + (4 / 8 - 0.6 + 1.0) * E.outBack(prog(t, tA, tA + 0.45), 2.2)) : 0;
+      const push = E.inCubic(prog(t, tA + 0.5, LS(9) + 0.05));
+      const endT = LS(9) + 0.05, endK = prog(t, endT, endT + 0.9);
+      const camEnd = [0, 2.3, 12.5];
+      const cam = endK > 0 ? camEnd : [lerp(0.3, 0, push), lerp(2.0, 2.25, push), lerp(8.2, 1.05, push) - 0.3 * prog(t, SC[7], tA)];
+      const tgt = endK > 0 ? [0, 3.6, 0] : [0, lerp(1.9, 2.25, push), 0];
+      G.renderSet(ctx, S.fin, t, u, { merge, mergeT: SC[7] + 1.0, dial, spin, end: endK, wow: prog(t, LS(8), LS(8) + 0.4), cam, tgt, fov: endK > 0 ? 34 : 36 });
+      // iris: the red centre swells to fill the frame, then opens on the end card
+      if (push > 0 && endK <= 0) {
+        const [cx, cy] = S.fin.coreScreen(); const r = 30 + 2400 * E.inExpo(prog(t, tA + 0.9, endT));
+        ctx.save(); ctx.fillStyle = BRAND; ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+      }
+      if (endK > 0 && endK < 1) { const r = 2400 * (1 - E.outCubic(prog(t, endT, endT + 0.35))); if (r > 1) { ctx.save(); ctx.fillStyle = BRAND; ctx.globalAlpha = 1; ctx.beginPath(); ctx.arc(W / 2, H / 2, r, 0, Math.PI * 2); ctx.fill(); ctx.restore(); } }
+      if (s === 7) { dimType(ctx, 'ONE COUNTRY.', t, LS(7) - 0.05, W / 2, H * 0.15, 120, { top: '#FFFFFF', bot: '#FFD0C8', side: [110, 20, 20] }); dimType(ctx, 'ONE CLOCK.', t, tw('one', 7, 1) - 0.1, W / 2, H * 0.25, 140, { top: '#FFE0D8', bot: '#E8402C', side: [110, 10, 10] }); }
+      if (s === 8 && push < 0.4) {
+        dimType(ctx, 'EVERY JOB.', t, tw('job', 8) - 0.15, W / 2, H * 0.13, 120, { top: '#FFFFFF', bot: '#FFE6C8', side: [110, 30, 20], out: tA + 0.6 });
+        dimType(ctx, 'EVERY AGENT.', t, tA - 0.15, W / 2, H * 0.22, 120, { top: '#FFFFFF', bot: '#FFE6C8', side: [110, 30, 20], out: tA + 0.6 });
         subtitle(ctx, [['Now imagine ', 0], ['one place', 1], [' for every job and every agent.', 0]], t, LS(8), LE(8) + 0.2);
       }
-      if (s === 9) {
-        const q = E.outCubic(prog(t, SC[9] + 0.2, SC[9] + 0.6));
-        if (q > 0) { ctx.save(); ctx.globalAlpha = q; ctx.textAlign = 'center'; ctx.font = font(50, 700, 'UI'); ctx.fillStyle = '#fff'; ctx.shadowColor = 'rgba(0,0,0,0.6)'; ctx.shadowBlur = 14; ctx.fillText('Every job. Every agent. One place.', W / 2, H * 0.78); ctx.font = '700 40px "Noto Sans CJK SC"'; ctx.fillStyle = GOLD; ctx.fillText('外国人才的工作与经纪人，一站汇集', W / 2, H * 0.83); ctx.restore(); }
+      if (endK > 0) {
+        // wordmark: per-glyph dimensional "laowai" + 吗 seal, URL pill, tagline
+        dimType(ctx, 'laowai', t, endT + 0.15, W / 2 - 70, H * 0.24, 200, { top: '#FFFFFF', bot: '#FFE2DA', side: [120, 10, 14] });
+        const q = E.outBack(prog(t, endT + 0.45, endT + 0.8), 2.2);
+        if (q > 0) {
+          ctx.save(); ctx.font = font(200, 800, 'Display'); const lw = ctx.measureText('laowai').width; ctx.translate(W / 2 - 70 + lw / 2 + 110, H * 0.24 - 70); ctx.rotate(-0.08 * (1 - q)); ctx.scale(q, q);
+          ctx.fillStyle = '#FFFFFF'; M.rrect(ctx, -82, -88, 164, 164, 34); ctx.shadowColor = 'rgba(80,0,0,0.5)'; ctx.shadowBlur = 24; ctx.shadowOffsetY = 10; ctx.fill();
+          ctx.shadowColor = 'transparent'; ctx.fillStyle = BRAND; ctx.font = '900 128px "Noto Sans CJK SC"'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('吗', 0, -2); ctx.restore();
+        }
+        const p2 = E.outCubic(prog(t, endT + 0.7, endT + 1.1));
+        if (p2 > 0) {
+          ctx.save(); ctx.globalAlpha = p2; ctx.font = font(58, 800, 'Display'); const w = ctx.measureText('laowai.ma').width + 90;
+          ctx.fillStyle = '#FFFFFF'; M.rrect(ctx, W / 2 - w / 2, H * 0.31 + (1 - p2) * 30, w, 100, 50); ctx.fill();
+          ctx.fillStyle = BRAND; ctx.textAlign = 'center'; ctx.fillText('laowai.ma', W / 2, H * 0.31 + 70 + (1 - p2) * 30);
+          ctx.font = font(46, 700, 'UI'); ctx.fillStyle = '#FFF2EC'; ctx.shadowColor = 'rgba(60,0,0,0.5)'; ctx.shadowBlur = 12; ctx.fillText('Every job. Every agent. One place.', W / 2, H * 0.43);
+          ctx.font = '700 38px "Noto Sans CJK SC"'; ctx.fillStyle = '#FFE0B0'; ctx.fillText('外国人才的工作与经纪人，一站汇集', W / 2, H * 0.475);
+          ctx.restore();
+        }
       }
     }
     // grade + vignette
     const v = ctx.createRadialGradient(W / 2, H * 0.45, H * 0.25, W / 2, H * 0.5, H * 0.8);
     v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(6,4,10,0.5)'); ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
     // whip between scenes: short directional smear using a translated copy
-    const cut = SC.find((c) => c > 0 && Math.abs(t - c) < 0.08);
+    const cut = SC.slice(0, 9).find((c) => c > 0 && Math.abs(t - c) < 0.08);
     if (cut !== undefined) { const k = 1 - Math.abs(t - cut) / 0.08; ctx.save(); ctx.globalAlpha = 0.35 * k; for (let i = 1; i <= 3; i++) ctx.drawImage(ctx.canvas, i * 26 * k, 0); ctx.restore(); }
   },
   post(ctx, u, t) {
@@ -391,4 +445,4 @@ M.film({
     ctx.save(); ctx.globalAlpha = 0.05; for (let i = 0; i < 1400; i++) { ctx.fillStyle = r() > 0.5 ? '#fff' : '#000'; ctx.fillRect(r() * W, r() * H, 2, 2); } ctx.restore();
   },
 });
-function DUR() { return LE(9) + 1.6; }
+function DUR() { return LE(9) + 2.4; }
