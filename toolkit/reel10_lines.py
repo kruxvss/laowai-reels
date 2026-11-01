@@ -1,0 +1,16 @@
+LINES = [(0, 0, t) for t in [
+    "This man has painted more Van Goghs than Van Gogh.",
+    "Van Gogh made about 860 paintings in his whole life.",
+    "Zhao Xiaoyong? More than one hundred thousand.",
+    "He started out as a farmer.",
+    "Now he lives in Dafen, a village in Shenzhen where thousands of painters copy masterpieces.",
+    "By hand.",
+    "It started in 1989 with one painter.",
+    "Then Walmart reportedly ordered fifty thousand paintings.",
+    "Deadline: fourteen days.",
+    "Then Zhao flies to Amsterdam to see the real Van Goghs for the first time.",
+    "And he finds his own paintings, sold as souvenirs, for far more than he was ever paid.",
+    "The talent was never the problem. The connection was.",
+    "That's what we're fixing for foreigners in China.",
+    "Every job, every agent, one place.",
+    "laowai.ma"]]
