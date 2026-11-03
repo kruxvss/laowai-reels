@@ -231,3 +231,9 @@ Every reel is encoded ONCE from the rendered frames with `toolkit/master.sh`
 Never encode an intermediate mp4 and re-encode it for captions/watermark.
 Never upload a file under ~8 Mbps: IG/TikTok re-encode it again and flat
 cartoon colours band and block. Keep files < 95 MB (GitHub raw URL limit; CRF=14 if over).
+
+## Covers (mandatory, since 2026-11-04)
+- Instagram: `videoThumbnailUrl` = JPEG (not PNG) 1080x1920 cover, clean reel frame + short teaser, no logo (`toolkit/cover.py`).
+- TikTok: the API cannot take a custom image; export a TikTok master with the cover appended as the last 0.2 s
+  (`COVER=cover.jpg toolkit/master.sh ...`) and set `videoCoverMilliseconds` = (duration + 0.1) * 1000.
+- Only 3D cartoon reels are posted; space posts out (no two within ~8 h).
