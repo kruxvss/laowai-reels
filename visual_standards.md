@@ -225,3 +225,9 @@ Prioritize creativity, visual impact, production quality and originality.
 Do not simplify the visual direction unless I explicitly ask for a minimalist style.
 
 These standards should guide all future content creation automatically, without requiring me to repeat them.
+## Upload encode (mandatory, since 2026-11-03)
+Every reel is encoded ONCE from the rendered frames with `toolkit/master.sh`
+(x264 slow, tune animation, CRF 12, 1080x1920 30 fps, BT.709, AAC 320k).
+Never encode an intermediate mp4 and re-encode it for captions/watermark.
+Never upload a file under ~8 Mbps: IG/TikTok re-encode it again and flat
+cartoon colours band and block. Keep files < 95 MB (GitHub raw URL limit; CRF=14 if over).
