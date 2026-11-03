@@ -15,9 +15,12 @@ ffmpeg -loglevel error -y \
   -i $WM -i "$AUD" \
   -filter_complex "[0:v]fps=30,format=rgb24[b];[b][1:v]overlay=0:0:eof_action=pass[a];[a][2:v]overlay=0:0:enable='lt(t,$WMEND)',scale=1080:1920:flags=lanczos+accurate_rnd+full_chroma_int:out_color_matrix=bt709:out_range=tv,format=yuv420p[v]" \
   -map "[v]" -map 3:a \
-  -c:v libx264 -preset slow -tune animation -crf 12 -maxrate 30M -bufsize 60M \
+  -c:v libx264 -preset slow -tune animation -crf ${CRF:-12} -maxrate 30M -bufsize 60M \
   -profile:v high -level 4.2 -g 60 -keyint_min 30 -sc_threshold 0 \
   -colorspace bt709 -color_primaries bt709 -color_trc bt709 -color_range tv \
   -c:a aac -b:a 320k -ar 48000 -ac 2 \
   -t $DUR -movflags +faststart "$OUT"
 ffprobe -v error -show_entries format=duration,bit_rate -of csv=p=0 "$OUT"
+# GitHub refuses files >100 MB (raw URLs are how Metricool fetches media)
+SZ=$(stat -c %s "$OUT")
+if [ "$SZ" -gt 95000000 ]; then echo "WARN: $SZ bytes > 95 MB: re-run with CRF=14"; fi
