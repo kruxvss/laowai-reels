@@ -7,3 +7,8 @@
 | E3 | Emotional stories get more shares than engineering stories | Ladder of Love (emotion) vs Guoliang (engineering), same format | shares/reach, saves/reach | Nov 6-8 | pending | |
 | E4 | 35-45 s cuts hold better than 55 s+ | Next 2 reels cut to <45 s | avg watch / length | Nov 10-20 | pending | |
 | E5 | Concrete comment prompt about the viewer's own life drives comments | "Who would you carve 6,000 steps for?" style vs generic "tell us below" | comments/reach | ongoing | pending | |
+
+## Notes 2026-11-05
+- Cartoon-3D story reels hold 69-71% at 3 s on IG vs 14-34% for promo reels (n=3 vs 6). Format works; reach now depends on topic.
+- Same format, same hold: M. Butterfly (love + betrayal twist) 1,354 views / 12 shares vs Meng UFO 232 / 0 shares. Early support for E3 (human emotion > curiosity). Next test: Beijing Underground City (mystery/investigation, documented vs unconfirmed stamps).
+- TikTok stays ~90-180 views regardless of content: distribution problem, not content. Needs Business account switch (user action).
