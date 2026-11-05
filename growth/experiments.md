@@ -12,3 +12,9 @@
 - Cartoon-3D story reels hold 69-71% at 3 s on IG vs 14-34% for promo reels (n=3 vs 6). Format works; reach now depends on topic.
 - Same format, same hold: M. Butterfly (love + betrayal twist) 1,354 views / 12 shares vs Meng UFO 232 / 0 shares. Early support for E3 (human emotion > curiosity). Next test: Beijing Underground City (mystery/investigation, documented vs unconfirmed stamps).
 - TikTok stays ~90-180 views regardless of content: distribution problem, not content. Needs Business account switch (user action).
+
+## Notes 2026-11-06 (stats check before Underground City reel)
+- Cartoon reels now cluster 1.2–1.4k views (Butterfly 1379, Jam 1354, Paris 1259 in <24h). UFO is the outlier (256): it hit at 18:47 on a weekday and the topic (aliens) is low-trust for this audience.
+- Shares come from "human cost / absurd stakes" stories (Butterfly 12, Jam 9); Paris has the best 3 s hold (73.5%) but the shortest watch (16 s): a strong visual hook with a thin story.
+- Saves are near zero across the board: the reels entertain but give nothing to keep. Test: end the Underground reel on a question that invites debate (comments), not saves.
+- Underground City applies all of it: a visual hook (a door, a staircase) + a big number in the first 5 s + a new reveal every ~5 s + a debatable closing question.
