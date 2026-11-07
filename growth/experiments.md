@@ -18,3 +18,9 @@
 - Shares come from "human cost / absurd stakes" stories (Butterfly 12, Jam 9); Paris has the best 3 s hold (73.5%) but the shortest watch (16 s): a strong visual hook with a thin story.
 - Saves are near zero across the board: the reels entertain but give nothing to keep. Test: end the Underground reel on a question that invites debate (comments), not saves.
 - Underground City applies all of it: a visual hook (a door, a staircase) + a big number in the first 5 s + a new reveal every ~5 s + a debatable closing question.
+
+## Notes 2026-11-07
+- E3 result (emotional vs engineering): Ladder 1519 views / 78.7% 3s hold / 33 likes vs Guoliang 1392 / 77.4% / 23 likes. Ladder also best on TikTok (282). Human relationships > engineering feats. Small sample; trend consistent with Butterfly.
+- Hold is improving reel over reel (68% UFO -> 79% Ladder): the cold-open hook format works.
+- Still ~0 saves; shares only on betrayal/absurd-stakes stories (Butterfly 12, Jam 9). Next: true-crime family betrayal (fake wedding scam) to test shares.
+- Followers 48 -> 52 this week. Reach per reel is flat at ~1.1-1.3k: IG is testing each reel on non-followers at a fixed batch size; breakout needs a share spike.
