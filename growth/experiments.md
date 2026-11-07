@@ -24,3 +24,8 @@
 - Hold is improving reel over reel (68% UFO -> 79% Ladder): the cold-open hook format works.
 - Still ~0 saves; shares only on betrayal/absurd-stakes stories (Butterfly 12, Jam 9). Next: true-crime family betrayal (fake wedding scam) to test shares.
 - Followers 48 -> 52 this week. Reach per reel is flat at ~1.1-1.3k: IG is testing each reel on non-followers at a fixed batch size; breakout needs a share spike.
+
+## Notes 2026-11-08
+- Underground City: 1,319 views in <24 h, 30 s avg watch (2nd best), but 3 s hold 67% vs 77-79% for Ladder/Guoliang. Its first second is a slow push on a closed door: the hook needs a face or motion on frame 1. Applied to the wedding (bride+groom+hearts on frame 1) and toll (truck in motion on frame 1) reels.
+- Ladder on TikTok keeps growing (282 -> 539): emotional stories have a long tail on TikTok.
+- Followers 53. Reach per reel still ~1.2-1.3k: no breakout yet. Next lever after this run: test a 45 s cut of the same format (shorter = higher completion) on the Chengdu flat reel? Not yet: the flat VO is 69 s; keep length constant for 3 more reels to read the topic effect cleanly.
