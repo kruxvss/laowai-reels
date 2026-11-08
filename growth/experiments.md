@@ -35,3 +35,6 @@
 - Eyelids reel is 56 s vs 65-70 s for wedding/toll/flat: a natural length test (E4). Compare its 3 s hold, avg watch % and completion against the 65-70 s true-crime trio after 72 h. Hook: face lit by the phone on frame 1, fingerprint + eye icons by 3-4 s.
 - Stats check before bank reel (Nov 8 17:00): Metricool still has no data past Nov 7; wedding (10:00 today) not in analytics yet. Followers 53.
 - Stats check Nov 8 20:40: Metricool analytics still stop at Nov 7 (wedding/toll published Nov 8 not yet synced; likely ~24-48h lag). Followers 53. Queue: eyes Nov 9 18:00, bank Nov 10 10:00, apple Nov 10 18:00.
+- Nov 9 00:50 stats: TikTok Ladder of Love at 1,048 views (282 -> 539 -> 1048): emotional love story keeps compounding on TT; best TT reel ever. Wedding TT 170 in first ~15 h. IG analytics still frozen at Nov 7 in Metricool.
+- E5 (topic tone): sun bear (light, funny, animals) on Nov 11 10:00 vs the true-crime run (wedding, toll, flat, eyes, bank). Compare shares + 3 s hold.
+- Idea from Ladder's TT tail: more love/relationship stories (real, documented) for TikTok.
