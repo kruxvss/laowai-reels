@@ -38,3 +38,5 @@
 - Nov 9 00:50 stats: TikTok Ladder of Love at 1,048 views (282 -> 539 -> 1048): emotional love story keeps compounding on TT; best TT reel ever. Wedding TT 170 in first ~15 h. IG analytics still frozen at Nov 7 in Metricool.
 - E5 (topic tone): sun bear (light, funny, animals) on Nov 11 10:00 vs the true-crime run (wedding, toll, flat, eyes, bank). Compare shares + 3 s hold.
 - Idea from Ladder's TT tail: more love/relationship stories (real, documented) for TikTok.
+- Nov 9 04:50 stats: IG wedding 1,228 views / 73.4% 3 s hold / 23.9 s avg watch (of 66 s) in ~19 h; 11 likes, 3 comments, 0 shares. Underground up to 1,453. Followers flat at 53 (Nov 7). Reach per reel still capped ~1.2-1.5k on IG.
+- Retention reads: avg watch ~24-30 s on 65-75 s reels = ~35-40% of length. E4 (56-58 s reels: eyes, bank, apple) will show if shorter lifts % watched.
