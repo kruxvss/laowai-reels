@@ -29,6 +29,7 @@ Ranked by reel strength (hook, twist, visuals, trust).
 - Pukou district, Nanjing, ~2014: LED screens, counters, staff in bank uniforms; called itself a "cooperative", no licence.
 - Promised 2% interest A WEEK. ~200 depositors, ~200M yuan in about a year. A Hangzhou businessman's interest stopped after 4 weeks; police detained 4.
 - Sources: SCMP 2015-01 ("Looks just like the real thing"); NPR 2015-01-28; Shanghai Daily.
+- NPR adds: opened 2013; guards, computers, LED screens with real-time interest + FX rates; depositor Shan got interest in advance; money went into failed real-estate projects. STATUS: script + build in progress (2026-11-10-a).
 
 ## 5. The haunted flat everyone wanted (Chengdu)
 - CORRECTION to the brief: buyers did NOT keep refusing. 89.7 m2, Shuangqing Rd, Chenghua district; market value ~1.6M yuan; an "unnatural death" there (no details published).
@@ -44,3 +45,10 @@ Ranked by reel strength (hook, twist, visuals, trust).
 
 ## Hold / skip
 - Kidney for an iPhone (Anhui teen, 2011): documented, but medical harm + organ trade; poor brand fit. Skip unless a strong angle.
+
+## 6b. Kunming fake Apple Store: source pass DONE 2026-11-08
+- July 20 2011: American blogger "BirdAbroad" in Kunming posts photos of a near-flawless copy (shoddy build, generic name tags); staff "adamantly believe" they work for Apple (Al Jazeera, Matador, AppleInsider).
+- Authorities inspected ~300 shops; found 5 self-branded "Apple stores", shut 2 for lacking business licences (not for IP); the blogger's store was not among them. Metropolitan Times: the 5 sold genuine Apple products.
+- Aug 11 2011 (Reuters via Fortune): 22 unauthorised Apple stores in Kunming, ordered to stop using the logo.
+- Apple then had 4 real stores in China (Beijing, Shanghai).
+- Angle: the staff thought they worked for Apple. Fact-check: whether goods were real is reported (5 stores: genuine). Do NOT say the iPhones were fake.

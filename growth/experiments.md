@@ -29,3 +29,7 @@
 - Underground City: 1,319 views in <24 h, 30 s avg watch (2nd best), but 3 s hold 67% vs 77-79% for Ladder/Guoliang. Its first second is a slow push on a closed door: the hook needs a face or motion on frame 1. Applied to the wedding (bride+groom+hearts on frame 1) and toll (truck in motion on frame 1) reels.
 - Ladder on TikTok keeps growing (282 -> 539): emotional stories have a long tail on TikTok.
 - Followers 53. Reach per reel still ~1.2-1.3k: no breakout yet. Next lever after this run: test a 45 s cut of the same format (shorter = higher completion) on the Chengdu flat reel? Not yet: the flat VO is 69 s; keep length constant for 3 more reels to read the topic effect cleanly.
+
+## Notes 2026-11-08 (b)
+- Stats check before the eyelids reel: no new data past Nov 7 (wedding published 10:00 today, toll at 18:00). Followers 53 (flat since Nov 6). Ladder TT still the TikTok leader (539).
+- Eyelids reel is 56 s vs 65-70 s for wedding/toll/flat: a natural length test (E4). Compare its 3 s hold, avg watch % and completion against the 65-70 s true-crime trio after 72 h. Hook: face lit by the phone on frame 1, fingerprint + eye icons by 3-4 s.
