@@ -33,3 +33,4 @@
 ## Notes 2026-11-08 (b)
 - Stats check before the eyelids reel: no new data past Nov 7 (wedding published 10:00 today, toll at 18:00). Followers 53 (flat since Nov 6). Ladder TT still the TikTok leader (539).
 - Eyelids reel is 56 s vs 65-70 s for wedding/toll/flat: a natural length test (E4). Compare its 3 s hold, avg watch % and completion against the 65-70 s true-crime trio after 72 h. Hook: face lit by the phone on frame 1, fingerprint + eye icons by 3-4 s.
+- Stats check before bank reel (Nov 8 17:00): Metricool still has no data past Nov 7; wedding (10:00 today) not in analytics yet. Followers 53.
