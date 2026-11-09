@@ -47,9 +47,11 @@
 - Fix needs the account owner: upgrade the Metricool plan (costs money: needs approval) or wait for the limit to reset, or post the files manually. Paused scheduling until decided.
 
 ## 2026-11-09 — moved publishing to Buffer
-- Buffer org "My organization" (free plan): 3 channels (IG laowai.ma, TT laowai.ma, YT "KruxSpot"), **10 scheduled posts max org-wide** -> refill as posts go out.
+- Buffer org "My organization" (free plan): 3 channels (IG laowai.ma, TT laowai.ma, YT "KruxSpot"), **10 scheduled posts per channel** (30 total; confirmed in Buffer support docs) -> refill as posts go out.
 - Account tz America/Phoenix; schedule with explicit +08:00 offsets.
 - IG has no JPEG cover field for video in Buffer: post the _tt file (cover appended) with thumbnailOffset = dur*1000-100 on IG, TT and YT.
 - Metricool queue (bank, apple, bear, quake, road) left untouched; fails while the account limit holds. Risk of duplicates if the limit lifts.
 - YT order: strongest old reels first (Butterfly, Ladder, Jam, Guoliang), then catch up.
 - E6 (next): faster pacing: 35-45 s, cut every 1.5-2 s, end card <=3 s, new voice.
+
+- Nov 9 19:08: queue filled to 9/10 per channel. IG/TT through Nov 14 10:00 (quake, bear, road, coins, eyes, apple, bank, toll, flat); YT daily 14:00 through Nov 18 (butterfly, ladder, jam, guoliang, meng, paris, underground, wedding, bear). 1 spare slot per channel for the next new reel.
