@@ -45,3 +45,11 @@
 - Metricool refused to publish the toll reel (Nov 8 18:00) and the Chengdu flat reel (Nov 9 10:00) on both IG and TikTok: status ERROR "You have reached your Metricool account limit." Nothing from Nov 8 18:00 onward has gone out.
 - Queued posts (eyes Nov 9 18:00, bank, apple, bear, quake, road) will fail the same way. Coins reel is rendered (2026-11-12-b) but NOT scheduled.
 - Fix needs the account owner: upgrade the Metricool plan (costs money: needs approval) or wait for the limit to reset, or post the files manually. Paused scheduling until decided.
+
+## 2026-11-09 — moved publishing to Buffer
+- Buffer org "My organization" (free plan): 3 channels (IG laowai.ma, TT laowai.ma, YT "KruxSpot"), **10 scheduled posts max org-wide** -> refill as posts go out.
+- Account tz America/Phoenix; schedule with explicit +08:00 offsets.
+- IG has no JPEG cover field for video in Buffer: post the _tt file (cover appended) with thumbnailOffset = dur*1000-100 on IG, TT and YT.
+- Metricool queue (bank, apple, bear, quake, road) left untouched; fails while the account limit holds. Risk of duplicates if the limit lifts.
+- YT order: strongest old reels first (Butterfly, Ladder, Jam, Guoliang), then catch up.
+- E6 (next): faster pacing: 35-45 s, cut every 1.5-2 s, end card <=3 s, new voice.
