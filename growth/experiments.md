@@ -72,3 +72,10 @@ Measure vs the 3D baseline: 3 s hold (~73%), avg watch (~24 s) and completion; T
 - 41.5 s, 20 shots (avg 2.1 s), punchline line 1, af_heart @1.3.
 - Self-critique before posting: pillar shot was unreadable from inside the pit (fixed with a high crane); end-card headline overflowed 1080 px (shrunk); cover frame first landed mid-crossfade (picked a clean frame). Add a cover/crossfade check and a text-width check to the routine.
 - Compare against the old-format baseline: target avg watch > 60% of length and 3 s hold > old reels.
+
+### E6 reel 2 built: submarine (Zhang Wuyi), awaiting a Buffer slot
+- 40.0 s, 15 shots plus intra-shot cuts, voice am_michael @1.25 (male, after af_heart), -14.5 LUFS.
+- Claims (30 m, 10 h, 50 kg) voiced and labelled "HE SAYS"; price left out (sources conflict).
+- Full-render contact sheets caught 3 bugs the test stills missed: a foreground rock filling the specs shot (camera pushed through it), Zhang cut off at the frame edge in the RC wide, and the "EMPTY" tag off-screen. Lesson: test stills at the START and END of every push-in, not only mid-shot; check every fx tag position on screen.
+- Small overlap: the "10 HRS" card is still up as the narration says "customer" (stat holds ~0.3 s too long). Next reel: end stat cards on the next sentence's first word.
+- Cover: hook frame + "HE GOT LAID OFF, / SO HE BUILT A SUB".
