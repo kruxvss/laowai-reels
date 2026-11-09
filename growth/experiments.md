@@ -67,3 +67,8 @@ Changes in this reel:
 - Score tempo up (pizzicato step 0.22 s, was 0.25-0.3), record-scratch stop on "Except Luo", sound on every cut.
 - End card 4.2 s, narrated throughout (no silent hold).
 Measure vs the 3D baseline: 3 s hold (~73%), avg watch (~24 s) and completion; TT views at 24 h.
+
+### E6 first reel shipped: nail house (Nov 14 18:00 CN, IG+TT)
+- 41.5 s, 20 shots (avg 2.1 s), punchline line 1, af_heart @1.3.
+- Self-critique before posting: pillar shot was unreadable from inside the pit (fixed with a high crane); end-card headline overflowed 1080 px (shrunk); cover frame first landed mid-crossfade (picked a clean frame). Add a cover/crossfade check and a text-width check to the routine.
+- Compare against the old-format baseline: target avg watch > 60% of length and 3 s hold > old reels.
