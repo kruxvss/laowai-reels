@@ -52,3 +52,8 @@ Ranked by reel strength (hook, twist, visuals, trust).
 - Aug 11 2011 (Reuters via Fortune): 22 unauthorised Apple stores in Kunming, ordered to stop using the logo.
 - Apple then had 4 real stores in China (Beijing, Shanghai).
 - Angle: the staff thought they worked for Apple. Fact-check: whether goods were real is reported (5 stores: genuine). Do NOT say the iPhones were fake.
+
+## 7. The nail house (Wenling 2012) - IN PRODUCTION 2026-11-09 (E6 fast format), folder 2026-11-14-b
+## 8. Next candidates (fun / fast / visual)
+- Zhang Wuyi, Wuhan: laid-off worker built mini submarines at home, sold them (NBC 2012, China Daily 2012-05-09, Shanghai Daily). Needs source pass.
+- Wuhan / rural inventors: homemade helicopters, flying saucers (The World of Chinese 2017 "China's tinkerers").

@@ -55,3 +55,15 @@
 - E6 (next): faster pacing: 35-45 s, cut every 1.5-2 s, end card <=3 s, new voice.
 
 - Nov 9 19:08: queue filled to 9/10 per channel. IG/TT through Nov 14 10:00 (quake, bear, road, coins, eyes, apple, bank, toll, flat); YT daily 14:00 through Nov 18 (butterfly, ladder, jam, guoliang, meng, paris, underground, wedding, bear). 1 spare slot per channel for the next new reel.
+
+## E6 (2026-11-09): faster, funnier format — first test "The nail house"
+Self-critique of the 56-74 s reels: avg watch 20-30 s, so half the video plays to nobody. Shots held 3-4 s with slow glides,
+stat cards repeated the narration, end card ~5 s, one flat narrator, little background comedy.
+Changes in this reel:
+- 41.5 s total; 20 shots (avg ~2 s); push-ins 0.5 %/f (was 0.15-0.3), punch-ins on key words, 5 impact kicks.
+- Punchline + visual joke in the first second (house in the middle of a road, car whooshing past).
+- Gags: waddling ducks, "HIM"/"HER" tags on different floors with snores, a giant nail dropping, tourists' flashes, a digger rolling in.
+- New voice: Kokoro af_heart at 1.3x (was bm_george 1.2x). Rotate voices each reel.
+- Score tempo up (pizzicato step 0.22 s, was 0.25-0.3), record-scratch stop on "Except Luo", sound on every cut.
+- End card 4.2 s, narrated throughout (no silent hold).
+Measure vs the 3D baseline: 3 s hold (~73%), avg watch (~24 s) and completion; TT views at 24 h.
