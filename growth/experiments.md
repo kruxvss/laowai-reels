@@ -40,3 +40,8 @@
 - Idea from Ladder's TT tail: more love/relationship stories (real, documented) for TikTok.
 - Nov 9 04:50 stats: IG wedding 1,228 views / 73.4% 3 s hold / 23.9 s avg watch (of 66 s) in ~19 h; 11 likes, 3 comments, 0 shares. Underground up to 1,453. Followers flat at 53 (Nov 7). Reach per reel still capped ~1.2-1.5k on IG.
 - Retention reads: avg watch ~24-30 s on 65-75 s reels = ~35-40% of length. E4 (56-58 s reels: eyes, bank, apple) will show if shorter lifts % watched.
+
+## BLOCKER 2026-11-09 12:30 (China)
+- Metricool refused to publish the toll reel (Nov 8 18:00) and the Chengdu flat reel (Nov 9 10:00) on both IG and TikTok: status ERROR "You have reached your Metricool account limit." Nothing from Nov 8 18:00 onward has gone out.
+- Queued posts (eyes Nov 9 18:00, bank, apple, bear, quake, road) will fail the same way. Coins reel is rendered (2026-11-12-b) but NOT scheduled.
+- Fix needs the account owner: upgrade the Metricool plan (costs money: needs approval) or wait for the limit to reset, or post the files manually. Paused scheduling until decided.
