@@ -21,5 +21,5 @@
 ## Script choices
 - Specs (30 m, 10 h) and the 50 kg catch are voiced as "he says" and labelled "HE SAYS" on screen: they are claims, not verified.
 - Price left out (sources conflict).
-- Voice: Kokoro am_michael @1.25 (rotated from af_heart on the nail reel).
+- Voice: Kokoro af_bella @1.15, each line placed on the original timing (max 6% speed-up). am_michael was rejected by the owner ("never use again").
 - Hull colour, workshop layout, inspection scene staging are animation choices, not documented details.
