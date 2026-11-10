@@ -91,3 +91,8 @@ Measure vs the 3D baseline: 3 s hold (~73%), avg watch (~24 s) and completion; T
 - TikTok quake @ +8h: 114 views, 1 like, avg watch 9.2 s of 60 s (15%). Retention is the problem, not distribution: viewers leave in the first ~10 s. Supports E6 (40 s, cuts every 1.5-2 s, punchline line 1).
 - YouTube butterfly @ +4h: 779 views, 35 likes (4.5% eng.), ~7x the TikTok number, on a 91 s old-format reel. YouTube Shorts is our best channel right now; YT shelf filled to Nov 20 (nail + submarine added).
 - Next: give YouTube the new fast reels earlier once the IG/TT pipeline settles; test a 2nd daily YT slot if the next 3 YT shorts hold >500 views.
+
+### E6 reel 3 built: rooftop mountain (Zhang Biqing, Beijing 2013)
+- 41 s, 13 shots, af_heart @1.18, bed >= 11.2 dB under VO (median 21.5), -14.1 LUFS.
+- Test stills + full contact sheet caught: hero floating in front of a pitched roof (gave the villa a flat terrace), crowd behind a camera that drifted past them (dolly toward a far look-point moves the camera a lot: never dolly toward far targets; translate instead), roof object invisible from street level (replaced by a phone card of the viral photo), a tag cut by a facade (move cards forward of walls), off-frame neighbour, floating bucket, half-hidden sign.
+- Rule kept: no invented numbers on screen (dropped a fake like counter on the phone card).
