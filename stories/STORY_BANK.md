@@ -57,3 +57,5 @@ Ranked by reel strength (hook, twist, visuals, trust).
 ## 8. Next candidates (fun / fast / visual)
 - Zhang Wuyi, Wuhan: laid-off worker built mini submarines at home, sold them (NBC 2012, China Daily 2012-05-09, Shanghai Daily). Needs source pass.
 - Wuhan / rural inventors: homemade helicopters, flying saucers (The World of Chinese 2017 "China's tinkerers").
+
+## 9. Rooftop mountain villa (Beijing 2013): IN PRODUCTION 2026-11-10, folder 2026-11-15-b (E6 #3)
