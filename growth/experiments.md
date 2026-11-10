@@ -80,3 +80,8 @@ Measure vs the 3D baseline: 3 s hold (~73%), avg watch (~24 s) and completion; T
 - Small overlap: the "10 HRS" card is still up as the narration says "customer" (stat holds ~0.3 s too long). Next reel: end stat cards on the next sentence's first word.
 - Cover: hook frame + "HE GOT LAID OFF, / SO HE BUILT A SUB".
 - OWNER FEEDBACK (Nov 10): am_michael voice rejected ("never use again"), and SFX in places as loud as the voice. Fix: re-voiced with af_bella @1.15 on the same line timings; SFX now ducked under the voice too, plus a sidechain limiter holding music+SFX at least 12 dB under the voice for each spoken line, comma pauses included. Measured: the bed's worst 250 ms window sits 10.5 dB under the voice, median 21.5 dB under. Rule from now: run the bed-vs-voice check on every mix and fail anything above -10 dB.
+
+### Nov 10 10:00 check-in
+- TikTok quake reel published 10:01 CN (tiktok.com/@laowai.ma/video/7706356936916126989).
+- Instagram quake reel FAILED: "Buffer has lost authorization to post on your behalf". Every queued IG post will fail until the owner reconnects Instagram in Buffer. Then: reschedule the quake IG post, add the submarine IG post.
+- Submarine scheduled on TikTok for Nov 15 10:00 CN (the first free slot).
