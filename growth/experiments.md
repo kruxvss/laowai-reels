@@ -85,3 +85,9 @@ Measure vs the 3D baseline: 3 s hold (~73%), avg watch (~24 s) and completion; T
 - TikTok quake reel published 10:01 CN (tiktok.com/@laowai.ma/video/7706356936916126989).
 - Instagram quake reel FAILED: "Buffer has lost authorization to post on your behalf". Every queued IG post will fail until the owner reconnects Instagram in Buffer. Then: reschedule the quake IG post, add the submarine IG post.
 - Submarine scheduled on TikTok for Nov 15 10:00 CN (the first free slot).
+
+### Nov 10 18:00 check-in
+- Instagram still unauthorized: bear IG post also failed. 2 IG reels missed so far (quake, bear).
+- TikTok quake @ +8h: 114 views, 1 like, avg watch 9.2 s of 60 s (15%). Retention is the problem, not distribution: viewers leave in the first ~10 s. Supports E6 (40 s, cuts every 1.5-2 s, punchline line 1).
+- YouTube butterfly @ +4h: 779 views, 35 likes (4.5% eng.), ~7x the TikTok number, on a 91 s old-format reel. YouTube Shorts is our best channel right now; YT shelf filled to Nov 20 (nail + submarine added).
+- Next: give YouTube the new fast reels earlier once the IG/TT pipeline settles; test a 2nd daily YT slot if the next 3 YT shorts hold >500 views.
