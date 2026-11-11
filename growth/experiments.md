@@ -96,3 +96,8 @@ Measure vs the 3D baseline: 3 s hold (~73%), avg watch (~24 s) and completion; T
 - 41 s, 13 shots, af_heart @1.18, bed >= 11.2 dB under VO (median 21.5), -14.1 LUFS.
 - Test stills + full contact sheet caught: hero floating in front of a pitched roof (gave the villa a flat terrace), crowd behind a camera that drifted past them (dolly toward a far look-point moves the camera a lot: never dolly toward far targets; translate instead), roof object invisible from street level (replaced by a phone card of the viral photo), a tag cut by a facade (move cards forward of walls), off-frame neighbour, floating bucket, half-hidden sign.
 - Rule kept: no invented numbers on screen (dropped a fake like counter on the phone card).
+
+### Nov 11 10:00 check-in
+- TikTok road-trip reel published 10:02. Instagram copy failed again (auth): 3 IG reels missed (quake, bear, road).
+- YouTube: 7 shorts appeared on the channel on Nov 10 that Buffer did not post ("via network": U9cWQ5krr7c, 9wCAOD5svcg, NBhbxIwd2pI, TVMyi2-piBU, HDoZBMDeRnE, ehuyW9X6HZM, LHsMrkzt-MU), 0-1 views each so far. Probably uploaded by hand; check for duplicates against the Buffer YT queue.
+- Butterfly short metrics unchanged since Nov 10 refresh (779 views).
