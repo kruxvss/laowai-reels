@@ -101,3 +101,10 @@ Measure vs the 3D baseline: 3 s hold (~73%), avg watch (~24 s) and completion; T
 - TikTok road-trip reel published 10:02. Instagram copy failed again (auth): 3 IG reels missed (quake, bear, road).
 - YouTube: 7 shorts appeared on the channel on Nov 10 that Buffer did not post ("via network": U9cWQ5krr7c, 9wCAOD5svcg, NBhbxIwd2pI, TVMyi2-piBU, HDoZBMDeRnE, ehuyW9X6HZM, LHsMrkzt-MU), 0-1 views each so far. Probably uploaded by hand; check for duplicates against the Buffer YT queue.
 - Butterfly short metrics unchanged since Nov 10 refresh (779 views).
+
+### E6 reel 4 built: A320 replica (Zhu Yue, Kaiyuan)
+- 40 s, 13 shots, af_bella @1.18, bed >= 10.9 dB under VO (median 25.6), -14.0 LUFS.
+- Caught: the dream-shot camera dollied past the hero (again: dolly toward a far look target), hero sliding out of the hook frame for the same reason, hero's legs only behind the toy-plane desk (removed him), waiter walking into the lens, price tag clipped, cockpit windows buried inside the nose.
+- RULE NOW: no `dolly(pos, look, pushK)` when the look target is > 15 m away; use an explicit slow translate of `pos` instead. Check the first and LAST frame of every camera key.
+- Known flaw left in: a background tree landed in the middle of the yard (random ring placement can come close to the set). Fix in the template: keep random trees outside the set's bounding box.
+- Background render hit the 2 h background limit at 450/600 frames: split long renders into two background jobs.
