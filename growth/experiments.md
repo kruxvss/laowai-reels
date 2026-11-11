@@ -108,3 +108,7 @@ Measure vs the 3D baseline: 3 s hold (~73%), avg watch (~24 s) and completion; T
 - RULE NOW: no `dolly(pos, look, pushK)` when the look target is > 15 m away; use an explicit slow translate of `pos` instead. Check the first and LAST frame of every camera key.
 - Known flaw left in: a background tree landed in the middle of the yard (random ring placement can come close to the set). Fix in the template: keep random trees outside the set's bounding box.
 - Background render hit the 2 h background limit at 450/600 frames: split long renders into two background jobs.
+
+### Nov 11: owner feedback
+- Pulled the quake reel (rescued at 10, married at 27, framed as fate): owner called it predatory. Buffer copies can't delete published posts; asked owner to delete on IG/TT. Rule: never romanticise relationships that start with a minor.
+- New direction: expressive VO with reaction beats (bleeped "what the—" when earned), hook rules in hooks_and_voice.md.
