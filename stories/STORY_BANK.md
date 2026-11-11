@@ -59,3 +59,5 @@ Ranked by reel strength (hook, twist, visuals, trust).
 - Wuhan / rural inventors: homemade helicopters, flying saucers (The World of Chinese 2017 "China's tinkerers").
 
 ## 9. Rooftop mountain villa (Beijing 2013): IN PRODUCTION 2026-11-10, folder 2026-11-15-b (E6 #3)
+
+## 10. Farmer builds a full-size A320 (Kaiyuan 2016-18): IN PRODUCTION 2026-11-11, folder 2026-11-16-a (E6 #4)
