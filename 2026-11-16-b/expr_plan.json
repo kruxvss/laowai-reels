@@ -1,0 +1,17 @@
+{"voice": "af_heart",
+ "lines": [
+  {"text": "This twenty-six storey tower isn't for people... It's for pigs!", "speed": 1.12, "semis": 0.8},
+  {"text": "Uh-joe, central China. A cement company builds two pig skyscrapers.", "speed": 1.15},
+  {"text": "Lifts carry about sixty pigs at a time, up to their floors.", "speed": 1.12, "semis": 0.5},
+  {"text": "Together, the towers can produce over a million pigs a year.", "speed": 1.12},
+  {"text": "And they need people. More than eight hundred of them.", "speed": 1.08},
+  {"text": "A vet graduate working there said he earned about twenty thousand yuen a month.", "speed": 1.15},
+  {"text": "The catch? Before work: shower, a sixty-five degree drying room...", "speed": 1.08, "slot": 3.6},
+  {"text": "A nozzle even shampoos your hair, so nobody skips it!", "speed": 1.12, "semis": 0.8, "start": 25.02},
+  {"text": "And staff lived on site for up to two months at a time.", "speed": 1.12},
+  {"text": "Would you take the job?", "speed": 1.0, "semis": 1.0},
+  {"text": "In China, jobs hide in places you'd never look. Find yours at Lao-why dot mah.", "speed": 1.1}
+ ],
+ "reactions": [
+  {"text": "Wait, what the", "voice": "bf_emma", "speed": 1.45, "semis": 1.5, "at": 23.86, "gain": 0.95, "bleep": 0.36}
+ ]}
